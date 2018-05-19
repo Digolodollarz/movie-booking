@@ -1,0 +1,64 @@
+<div class="header-content">
+  <div class="header">
+    <h2>{{movie.title}}</h2>
+  </div>
+  <div class="row theatre">
+    <div class="seats col-12 col-md-8">
+      <style>
+
+      </style>
+      <div class="screen">
+        screen
+      </div>
+
+      <div *ngFor="let row of theater.seats" class="seat-row">
+        <!--<div class="column">-->
+        {{row.row}}
+
+        <span *ngFor="let seat of row.seats" class="seat">
+        <button [disabled]="seat.status == 2" class="btn btn-seat" (click)="toggleSeat(seat, row.row)"
+                [ngClass]="{'btn-success': seat.status==0,
+                 'btn-warning': seat.status==1,
+                 'btn-danger btn-disabled': seat.status==2}">
+          <i class="fa fa-user"></i></button>
+      </span>
+        {{row.row}}
+        <!--</div>-->
+      </div>
+      <div class="seat-row">
+        <span *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" class="seat">{{i}}</span>
+      </div>
+    </div>
+    <style>
+      .details {
+        position: relative;
+      }
+    </style>
+    <div class="details col-12 col-md-4">
+      <h3>Details</h3>
+      <p>Cinema: {{theater.name}}</p>
+      <p>Time: {{theater.time}}</p>
+      <p>Price: {{theater.price | currency: 'USD'}}</p>
+      <p>Tickets: {{selectedSeats.length}}</p>
+      <p>Seats: <span *ngFor="let seat of selectedSeats">{{seat.row + seat.id.toString().substr(1)}} ,
+
+      </span></p>
+      <hr>
+      <p>Total: {{theater.price * selectedSeats.length}}</p>
+
+      <style>
+        .key {
+          position: absolute;
+          bottom: 16px;
+          right: 16px;
+          padding-right: 16px;
+        }
+      </style>
+      <div class="key"> Key:
+        <button class="btn btn-seat btn-success">Available</button>
+        <button class="btn btn-seat btn-warning">Selected</button>
+        <button class="btn btn-seat btn-danger">Taken</button>
+      </div>
+    </div>
+  </div>
+</div>

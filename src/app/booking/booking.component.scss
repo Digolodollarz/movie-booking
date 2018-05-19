@@ -1,0 +1,37 @@
+.header-content {
+  background-color: rgba(255, 255, 255, 0.78);
+}
+
+.seat-row {
+  display: flex;
+  flex-direction: row;
+
+  .btn.disabled, .btn[disabled] {
+    cursor: default;
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .seat {
+    text-align: center;
+    //background: blue;
+    margin: 4px;
+    flex: 0 1 calc(20% - 8px);
+
+    .btn.btn-seat {
+      padding: 8px;
+    }
+  }
+}
+.screen {
+  width: 80%;
+  margin: 8px auto 16px;
+  background-color: yellow;
+  color: #000;
+  text-align: center;
+  text-transform: full-width;
+}
+
